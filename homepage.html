@@ -1,0 +1,96 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Homepage</title>
+    </head>
+
+   <body>
+
+    <h1>Welcome to Cinemagic Odissey</h1>
+    
+
+    <nav class="nav-bar">
+        <ul>
+                <li><a href="{% url 'articles:list' %}">Film Reviews</a></li>
+                <li><a href="{% url 'about' %}">About me</a></li>
+                <li><a href="{% url 'criterias' %}">Review Criteria</a></li>
+                
+        </ul>
+    </nav>
+
+    <main>
+             <h4> <p>At Cinemagic we explore cinema. 
+                If you want to know what xriterias I use to analyze the film then click on the above button that says "review criteria"
+             </p>
+           </h4>
+
+</main>
+
+    </body>
+
+    <style>
+
+
+            .nav-bar ul{
+                list-style-type: none;
+                padding: 0px;
+                margin: 0px;
+                overflow: hidden;
+                margin-left: 10px; 
+                margin-top: 10px; 
+               
+                
+            }
+
+            .wrapper img{
+                image-rendering: crisp-edges;
+                margin-left: 200px;
+                padding: 0px;
+                margin: 0px;  
+            }
+
+            .nav-bar a{
+                color:yellow;
+                text-decoration: none;
+                display: block;
+                text-align: center;
+                padding: 10px;
+                
+            }
+
+            .nav-bar li{
+                float: left;
+                color: #000;
+                
+            }
+
+            .nav-bar li:nth-child(1) a {
+            background-color: #ffb300; /* Orange color for the first link */ /* White text color for the first link *\/* Orange color for the first link */
+            color: #000 !important;
+        }
+
+        .nav-bar li:nth-child(2) a {
+            background-color: #ffb300; /* Orange color for the first link */
+            color: #000 !important;
+        }
+
+        .nav-bar li:nth-child(3) a {
+            background-color: #ffb300; /* Orange color for the first link */
+            color: #000 !important;
+        }
+
+            main{
+                margin: 5px;
+                          
+             };
+
+
+    </style>
+
+</html>
+
+{% endblock %}

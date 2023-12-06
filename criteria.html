@@ -1,0 +1,81 @@
+
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+</head>
+
+<body>
+
+<h1>Review Criteria</h1>
+
+
+<nav class="nav-bar">
+    <ul>
+            <li><a href="{% url 'articles:list' %}">Film Reviews</a></h1></li>
+            <li><a href="{% url 'about' %}">About me</a></h1></li>
+            <li><a href="{% url 'home_page' %}">Homepage</a></h1></li>
+    </ul>
+
+    <style>
+
+.nav-bar ul{
+                list-style-type: none;
+                padding: 0px;
+                margin: 0px;
+                overflow: hidden;
+                margin-left: 10px; 
+                margin-top: 10px; 
+               
+                
+            }
+
+            .wrapper img{
+                image-rendering: crisp-edges;
+                margin-left: 200px;
+                padding: 0px;
+                margin: 0px;  
+            }
+
+            .nav-bar a{
+                color: white;
+                text-decoration: none;
+                display: block;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .nav-bar li{
+                float: left;
+            }
+
+            .nav-bar li:nth-child(1) a {
+            background-color: #ffb300; /* Orange color for the first link */ /* White text color for the first link *\/* Orange color for the first link */
+            color: #000 !important;
+        }
+
+        .nav-bar li:nth-child(2) a {
+            background-color: #ffb300; /* Orange color for the first link */
+            color: #000 !important;
+        }
+
+        .nav-bar li:nth-child(3) a {
+            background-color: #ffb300; /* Orange color for the first link */
+            color: #000 !important;
+        }
+
+            main{
+                margin: 5px;
+                          
+             };
+
+    </style>
+
+    <body>
+            <p><h4>these are the things..... blah blah blah</h4></p>
+    </body>
+
+{% endblock %}

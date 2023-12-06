@@ -1,0 +1,168 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="article-detail">
+    <div class="article">
+
+    <div class="art_body">
+        <img src="{{ article.thumb.url }}"/>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.body }}</p>
+        <p>{{ article.date }}</p>
+    </div> 
+
+    <div class="rating_header">Rate this Article :)</div>
+
+    <div id="star-container" class="star-rating">
+        <span class="star" onclick="rateArticle(1)">&#9734;</span>
+        <span class="star" onclick="rateArticle(2)">&#9734;</span>
+        <span class="star" onclick="rateArticle(3)">&#9734;</span>
+        <span class="star" onclick="rateArticle(4)">&#9734;</span>
+        <span class="star" onclick="rateArticle(5)">&#9734;</span>
+    </div>
+
+    <div id="average-rating" class="average-rating"></div>
+
+
+    <button onclick="resetRatings()">Reset Ratings</button>
+
+</div>
+</div>
+
+<style>
+.article {
+    position: relative;
+}
+
+.article img {
+    width: 220px !important;
+    height: 350px !important;
+    border-radius: 5px;
+    border: 0.4em ivory double;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 21px 5px rgba(225, 225, 224, 0.68);
+    -moz-box-shadow: 0px 0px 21px 5px rgba(225, 225, 224, 0.68);
+    box-shadow: 0px 0px 21px 5px rgba(225, 225, 224, 0.68);
+}
+
+.star-rating {
+    position: absolute;
+    top: 190px; /* Adjust top position as needed */
+    left: 470px; /* Adjust left position as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.star {
+    font-size: 35px;
+    color: white;
+    background-color: unset;
+    border: none;
+    margin-left: 5px;  
+}
+
+
+button {
+    margin-top: 5px;
+    margin-left: 10px;
+    position: absolute;
+    top: 195px; /* Adjust top position as needed */
+    left: 330px; /* Adjust left position as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+    
+}
+
+.article-body {
+       font-family:'Times New Roman', Times, serif
+    }
+
+
+.average-rating{
+    position: absolute;
+    top: 190px; /* Adjust top position as needed */
+    left: 470px; /* Adjust left position as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    top: 250px;
+    left: 513px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium
+}
+
+.rating_header{
+    position: absolute;
+    top: 160px; /* Adjust top position as needed */
+    left: 510px; /* Adjust left position as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: medium
+   
+};
+
+</style>
+
+<script>
+// Load previous ratings from local storage
+let totalRating = parseFloat(localStorage.getItem('totalRating')) || 0;
+let numberOfRatings = parseInt(localStorage.getItem('numberOfRatings')) || 0;
+
+// Update UI with previous ratings
+updateAverageRating();
+updateStarColors(0);
+
+function rateArticle(rating) {
+totalRating += rating;
+numberOfRatings++;
+updateAverageRating();
+updateStarColors(rating);
+
+// Save ratings to local storage
+localStorage.setItem('totalRating', totalRating.toString());
+localStorage.setItem('numberOfRatings', numberOfRatings.toString());
+}
+
+function resetRatings() {
+totalRating = 0;
+numberOfRatings = 0;
+updateAverageRating();
+updateStarColors(0);
+
+// Clear ratings from local storage
+localStorage.removeItem('totalRating');
+localStorage.removeItem('numberOfRatings');
+}
+
+function updateAverageRating() {
+const average = numberOfRatings === 0 ? 0 : totalRating / numberOfRatings;
+const averageRatingElement = document.getElementById('average-rating');
+averageRatingElement.textContent = `Average Rating: ${average.toFixed(1)}`;
+}
+
+function updateStarColors(selectedRating) {
+const starContainer = document.getElementById('star-container');
+const stars = starContainer.getElementsByClassName('star');
+
+for (let i = 0; i < stars.length; i++) {
+    if (i < selectedRating) {
+        stars[i].style.color = 'gold';
+    } else {
+        stars[i].style.color = 'gray';
+    }
+}
+}
+</script>
+            
+{% endblock %}
+
+
+
+    
